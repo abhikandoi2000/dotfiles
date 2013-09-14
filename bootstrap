@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bootstrap
+
+DOTFILES_ROOT=`pwd`
+
+ln -s $DOTFILES_ROOT"/zsh/zshrc" ~/.zshrc
+
+echo "[Done] zsh dotfile symlinked"
