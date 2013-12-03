@@ -4,5 +4,9 @@
 DOTFILES_ROOT=`pwd`
 
 ln -s $DOTFILES_ROOT"/zsh/zshrc" ~/.zshrc
+ln -s $DOTFILES_ROOT"/bash/bashrc" ~/.bashrc
+ln -s $DOTFILES_ROOT"/vim/vimrc" ~/.vimrc
 
 echo "[Done] zsh dotfile symlinked"
+echo "[Done] bashrc dotfile symlinked"
+echo "[Done] vimrc dotfile symlinked"

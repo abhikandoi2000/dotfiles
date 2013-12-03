@@ -1,0 +1,86 @@
+#
+# ~/.bashrc
+#
+
+# aliases
+alias ls='ls --color=auto'
+eval $(dircolors -b)
+alias ll='ls -l'
+alias la='ls -a'
+alias lal='ls -al'
+alias lr='ls -R'
+alias b='cd ..'
+#alias die='shutdown -P now'
+alias die='sudo shutdown -P now'
+alias rebirth='reboot'
+alias now='date'
+alias pac='sudo pacman -S'
+alias aptg='sudo apt-get'
+alias aptf='sudo apt-fast'
+alias yt='youtube-dl -t'
+alias wifi='sudo wifi-menu'
+alias play='mpg123'
+alias grep='grep --color=auto'
+alias test2='ping google.com'
+
+# init nvm
+. ~/nvm/nvm.sh
+
+# add heroku to PATH env variable
+#export PATH=$PATH:/usr/local/heroku/bin
+
+# add ruby gems to PATH env variable
+export PATH=$PATH:/home/abhi/.gem/ruby/2.0.0/bin
+
+# add ~/bin to PATH env variable
+export PATH=$PATH:/home/abhi/bin
+
+# github:rupa/z jump around
+. ~/projects/forked/z/z.sh
+
+# man page coloring using less
+man() {
+    env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+	LESS_TERMCAP_md=$(printf "\e[1;31m") \
+	LESS_TERMCAP_me=$(printf "\e[0m") \
+	LESS_TERMCAP_se=$(printf "\e[0m") \
+	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+	LESS_TERMCAP_ue=$(printf "\e[0m") \
+	LESS_TERMCAP_us=$(printf "\e[1;32m") \
+	man "$@"
+}
+
+# create a new dir and jump to it
+function md() {
+  mkdir $1
+  cd $1
+}
+
+function server() {
+  local port="${1:-8000}"
+  open "http://localhost:${port}/"
+  python SimpleHTTPServer "$port"
+}
+
+# enables code syntax coloring in less, need to install source-highlight first
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS=' -R '
+
+# start redshift, reduces eye strain by adjusting screen color temperature
+# config file in ~/.config/redshift.conf
+# disabling since it never exits
+# redshift
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH=/usr/local/share/npm/bin:$PATH
